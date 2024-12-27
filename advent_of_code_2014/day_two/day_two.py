@@ -6,7 +6,25 @@ def surface_area(dimensions_string: str) -> int:
     """Takes the three dimensions of an object and 
     returns the area of wrapping paper needed."""
 
-    
+    dimensions = convert_data(dimensions_string)
+
+    if not validate_surface_area(dimensions):
+        raise TypeError('Input must be of form AxBxC where A, B and C are all numbers.')
+
+    length_width = dimensions[0] * dimensions[1]
+    width_height = dimensions[1] * dimensions[2]
+    height_length = dimensions[2] * dimensions[0]
+
+    if length_width <= width_height and length_width <= height_length:
+        smallest = length_width
+
+    if width_height <= length_width and width_height <= height_length:
+        smallest = width_height
+
+    if height_length <= width_height and height_length <= length_width:
+        smallest = height_length
+
+    return 2 * (length_width + width_height + height_length) + smallest
 
 
 def validate_surface_area(dimensions: list[int]) -> bool:
@@ -18,13 +36,13 @@ def validate_surface_area(dimensions: list[int]) -> bool:
     if not len(dimensions) == 3:
         return False
 
-    if not dimensions[0].isdigit():
+    if not (isinstance(dimensions[0], int) or isinstance(dimensions[0], float)):
         return False
 
-    if not dimensions[1].isdigit():
+    if not (isinstance(dimensions[1], int) or isinstance(dimensions[1], float)):
         return False
 
-    if not dimensions[2].isdigit():
+    if not (isinstance(dimensions[2], int) or isinstance(dimensions[2], float)):
         return False
 
     return True
@@ -37,10 +55,15 @@ def convert_data(string: str) -> list[int]:
     if not isinstance(string, str):
         raise ValueError('Input must be a string.')
 
-    if not re.match('^\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?$', string):
+    if not re.match(r'^\d+(\.\d+)?x\d+(\.\d+)?x\d+(\.\d+)?$', string):
         raise ValueError('Input must be a string of format AxBxC where A, B and C are numbers.')
 
-    return float(string.split('x'))
+    result = string.split('x')
+
+    for i in range(len(result)):
+        result[i] = float(result[i])
+
+    return result
 
 #I have greatly over complicated this!
 if __name__ == "__main__":
