@@ -23,8 +23,6 @@ def validate_double_letters(string: str) -> bool:
     for i in range(len(string)-1):
 
         if string[i] == string[i+1]:
-            print(i)
-            print(string[i])
             return True
 
     return False
@@ -40,6 +38,8 @@ if __name__ == "__main__":
 
     with open('day_five_input.txt', 'r', encoding='UTF-8') as file:
         input_data = file.read()
+
+    input_data = input_data.split('\n')
 
     valid_strings = 0
     for line in input_data:
