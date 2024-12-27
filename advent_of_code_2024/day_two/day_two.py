@@ -13,14 +13,24 @@ def part_one(list_of_num):
         if ascending:
 
             if not list_of_num[i] < list_of_num[i+1] <= list_of_num[i] + 3:
-                return False
+                return False, i
 
         else:
 
             if not list_of_num[i] > list_of_num[i+1] >= list_of_num[i] - 3:
-                return False
+                return False, i
 
-    return True
+    return True, None
+
+
+def part_two(list_of_num):
+    """Finds part two answer."""
+
+    part_one_results = part_one(list_of_num)
+    if not part_one_results[0]:
+        list_of_num.pop(part_one_results[1]+1)
+
+    return part_one(list_of_num)[0]
 
 if __name__ == '__main__':
 
@@ -37,7 +47,20 @@ if __name__ == '__main__':
         for j in range(len(num_list)):
             num_list[j] = int(num_list[j])
 
-        if part_one(num_list):
+        if part_one(num_list)[0]:
+            total += 1
+
+    print(total)
+
+    total = 0
+
+    for puzzle in input_data:
+        num_list = puzzle.split(' ')
+
+        for j in range(len(num_list)):
+            num_list[j] = int(num_list[j])
+
+        if part_two(num_list):
             total += 1
 
     print(total)
