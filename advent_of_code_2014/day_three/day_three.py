@@ -18,4 +18,12 @@ def santa_tracker(string: str) -> int:
                 coord[1] -= 1
 
         coords_visited.append(coord)
-        
+    
+    #ideally I'd use a map or something to clean the coords_visited array but
+    #I don't know the syntax and am writing this on the road
+    unique_coords = []
+    for co in coord:
+        if co not in unique_coords:
+            unique_coords.append(co)
+    
+    return len(unique_coords)
