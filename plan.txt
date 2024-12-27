@@ -6,21 +6,21 @@ physics based would be perfect.
 
 Things to work on:
     - Pushing to git more.
-        - So push more!
+        - So push more! : working so far
     - Stop overcomplicating things!
-        - No more superfluous functions to validate data!
+        - No more superfluous functions to validate data! : after day 2 2014 seeming to improve
     - Run pytest more!
-        - Run pytest after each major addition.
+        - Run pytest after each major addition. : working so far!
 
 Things to learn:
     - Test parameterisation of tests.
         - Rewrite test files as paramaterisation.
-    - Github workflows.
-        - Make a workflow that puts badge of pytest % and pylint score
+    - Github workflows. DONE!
+        - Make a workflow that puts badge of pytest % and pylint score : completed within reason
         ^ Significantly harder than expected - worth looking at [badge-maker](https://github.com/badgen/badgen) 
           or [dynamic-badges-action](https://github.com/muesli/badge-load).
     - Using the any() method
-        - Rewrite day two validate function to use any()
+        - Rewrite day two 2014 validate function to use any()
 
 Data Project:
     - Tracking the decline of RTS video games across time
