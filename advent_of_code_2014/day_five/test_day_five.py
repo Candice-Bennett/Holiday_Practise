@@ -1,6 +1,6 @@
 #pylint: skip-file
 
-from day_five import validate_vowels, validate_double_letters, validate_bad_string
+from day_five import validate_vowels, validate_double_letters, validate_bad_string, repeat_with_middle, two_letters_no_overlap
 
 def test_validate_vowels_positive_case():
     assert validate_vowels('aei')
@@ -50,4 +50,4 @@ def test_repeat_with_middle_positive_case():
     assert repeat_with_middle('aaa')
 
 def test_repeat_with_middle_negative_case():
-    assert not two_letters_no_overlap('abc')
+    assert not repeat_with_middle('abc')

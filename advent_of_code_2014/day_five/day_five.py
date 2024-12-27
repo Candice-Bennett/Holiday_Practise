@@ -48,9 +48,15 @@ def find_part_one(string: list[str]) -> None:
     print(valid_strings)
 
 
-def repeat_with_middle():
+def repeat_with_middle(string: str) -> bool:
     '''Checks if string has something of for xyx'''
-    ...
+    
+    for i in range(len(string)-2):
+
+        if string[i] == string[i+2]:
+            return True
+    
+    return False
 
 
 def two_letters_no_overlap():
