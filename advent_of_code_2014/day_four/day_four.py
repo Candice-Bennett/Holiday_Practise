@@ -17,7 +17,7 @@ def hash_converter(key: str, part_two=False) -> str:
         if not part_two:
             if hash_string[0:5] == "00000":
                 found = True
-        
+
         else:
             if hash_string[0:6] == "000000":
                 found = True
@@ -25,7 +25,7 @@ def hash_converter(key: str, part_two=False) -> str:
         string = key + str(i)
         i += 1
 
-    return i - 1
+    return i - 2
 
 if __name__ == '__main__':
 
