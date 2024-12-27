@@ -31,18 +31,18 @@ def coord_splitter(directions: str) -> list[str]:
     robo_santa_dir = ""
 
     for i in range(len(directions)):
-    
+
         if i % 2 == 0:
             santa_dir += directions[i]
         else:
             robo_santa_dir += directions[i]
-        
+
     return [santa_dir, robo_santa_dir]
 
 
 def unique_coord_count(coords: list[list[int]]) -> int:
     """Takes an input of coordinates and returns the number of unique ones"""
-    
+
     #ideally I'd use a map or something to clean the coords_visited array but
     #I don't know the syntax and am writing this on the road
     unique_coords = []
@@ -56,7 +56,7 @@ def unique_coord_count(coords: list[list[int]]) -> int:
 def robo_santa_tracker(directions: str) -> int:
     """Takes coordinates and returns the number of houses visited when
     santa and robo-santa are both delivering presents."""
-    
+
     santa_directions, robo_santa_directions = coord_splitter(directions)
 
     total_coords = []
