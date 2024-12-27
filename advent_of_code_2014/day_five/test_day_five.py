@@ -10,7 +10,7 @@ def test_validate_vowels_positive_case():
 def test_validate_vowels_negative_case():
     assert not validate_vowels('aha')
     assert not validate_vowels('pppopppppppppp')
-    assert not validate_vowels('the story goes')
+    assert not validate_vowels('the end')
 
 def test_validate_double_positive_case():
     assert validate_double_letters('xx')
@@ -19,7 +19,7 @@ def test_validate_double_positive_case():
 
 def test_validate_double_negative_case():
     assert not validate_vowels('aha')
-    assert not validate_vowels('testing that this does not work')
+    assert not validate_vowels('shouldnt work')
     assert not validate_vowels('the story goes')
 
 def test_validate_bad_positive_case():

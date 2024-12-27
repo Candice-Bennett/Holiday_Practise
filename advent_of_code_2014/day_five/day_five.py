@@ -19,8 +19,21 @@ def validate_vowels(string: str) -> bool:
 
 def validate_double_letters(string: str) -> bool:
     """Checks a double letter appears in the string"""
-    ...
+    
+    for i in range(len(string)-1):
+
+        if string[i] == string[i+1]:
+            print(i)
+            print(string[i])
+            return True
+    
+    return False
+
 
 def validate_bad_string(string: str) -> bool:
     """Ensures disallowed substrings are not in string"""
     ...
+
+if __name__ == "__main__":
+
+    print(validate_double_letters('shouldnt work'))
