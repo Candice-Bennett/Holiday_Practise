@@ -7,9 +7,9 @@ def test_santa_tracker():
     assert santa_tracker("^>v<") == [[0,0], [0,1], [1,1], [1,0], [0,0]]
 
 def test_coord_splitter():
-    assert coord_splitter("^^^") == [["^^"],["^"]]
-    assert coord_splitter("><^v^v<>") == [[">^^<"],["<vv>"]]
-    assert coord_splitter("^v^v^v^v") == [["^^^^"],["vvvv"]]
+    assert coord_splitter("^^^") == ["^^","^"]
+    assert coord_splitter("><^v^v<>") == [">^^<","<vv>"]
+    assert coord_splitter("^v^v^v^v") == ["^^^^","vvvv"]
 
 def test_robo_santa_tracker():
     assert robo_santa_tracker('^v') == 3
