@@ -1,1 +1,1 @@
-This is my holiday practise repo
+This is my holiday practice repo
