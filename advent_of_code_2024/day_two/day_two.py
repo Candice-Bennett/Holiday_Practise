@@ -23,3 +23,19 @@ def part_one(numbers):
     
     return True
 
+if __name__ == '__main__':
+
+    total = 0
+
+    with open('day_two_input.txt', 'r', encoding='UTF-8') as file:
+        input_data = file.read()
+
+    input_data = input_data.split('\n')
+
+    for puzzle in input_data:
+        num_list = puzzle.split(' ')
+
+        if part_one(num_list):
+            total += 1
+    
+    print(total)
