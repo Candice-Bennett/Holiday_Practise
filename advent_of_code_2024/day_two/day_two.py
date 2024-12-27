@@ -1,9 +1,8 @@
 """Script contains functions for day two."""
 
-def part_one(numbers):
+def part_one(list_of_num):
     """Finds part one answer."""
 
-    list_of_num = numbers.split()
     ascending = False
 
     if list_of_num[0] < list_of_num[1]:
@@ -34,6 +33,9 @@ if __name__ == '__main__':
 
     for puzzle in input_data:
         num_list = puzzle.split(' ')
+
+        for i in range(len(num_list)):
+            num_list[i] = int(num_list[i])
 
         if part_one(num_list):
             total += 1
