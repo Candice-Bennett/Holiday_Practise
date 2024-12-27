@@ -6,7 +6,25 @@ physics based would be perfect.
 
 Things to work on:
     - Pushing to git more.
-
+        - So push more!
+    - Stop overcomplicating things!
+        - No more superfluous functions to validate data!
+    - Run pytest more!
+        - Run pytest after each major addition.
 
 Things to learn:
     - Test parameterisation of tests.
+        - Rewrite test files as paramaterisation.
+    - Github workflows.
+        - Make a workflow that puts badge of pytest % and pylint score
+    - Using the any() method
+        - Rewrite day two validate function to use any()
+
+Data Project:
+    - Tracking the decline of RTS video games across time
+    - Compare to other genres
+    - Releases across time
+    - Concurrent players
+    - Sales figures
+
+    SteamDB? MobiGames? Need to look for APIs.
