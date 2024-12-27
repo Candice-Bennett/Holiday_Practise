@@ -34,16 +34,48 @@ def validate_bad_string(string: str) -> bool:
     bad_strings = ['ab','cd','pq','xy']
     return not any(bad_string in string for bad_string in bad_strings)
 
+
+def find_part_one(string: list[str]) -> None:
+    """Prints number of valid strings"""
+
+    valid_strings = 0
+
+    for line in string:
+
+        if validate_vowels(line) and validate_double_letters(line) and validate_bad_string(line):
+            valid_strings += 1
+
+    print(valid_strings)
+
+
+def repeat_with_middle():
+    '''Checks if string has something of for xyx'''
+    ...
+
+
+def two_letters_no_overlap():
+    '''Checks if string has a pair of characters that repeats'''
+    ...
+
+
+def find_part_two(string):
+    """Prints number of valid strings"""
+
+    valid_strings = 0
+
+    for line in string:
+
+        if repeat_with_middle(line) and two_letters_no_overlap(line):
+            valid_strings += 1
+
+    print(valid_strings)
+
 if __name__ == "__main__":
 
     with open('day_five_input.txt', 'r', encoding='UTF-8') as file:
         input_data = file.read()
 
     input_data = input_data.split('\n')
+    find_part_one(input_data)
 
-    valid_strings = 0
-    for line in input_data:
-        if validate_vowels(line) and validate_double_letters(line) and validate_bad_string(line):
-            valid_strings += 1
 
-    print(valid_strings)

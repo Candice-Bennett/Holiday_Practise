@@ -36,3 +36,18 @@ def test_validate_bad_negative_case():
     assert not validate_bad_string('cdddoutsdjkfn')
     assert not validate_bad_string('fqfqfqpqwasddawq')
     assert not validate_bad_string('roxy')
+
+def test_two_letters_no_overlap_positive_case():
+    assert two_letters_no_overlap('xyxy')
+    assert two_letters_no_overlap('aabcdefgaa')
+
+def test_two_letters_no_overlap_negative_case():
+    assert not two_letters_no_overlap('aaa')
+
+def test_repeat_with_middle_positive_case():
+    assert repeat_with_middle('xyx')
+    assert repeat_with_middle('abcdefeghi')
+    assert repeat_with_middle('aaa')
+
+def test_repeat_with_middle_negative_case():
+    assert not two_letters_no_overlap('abc')
