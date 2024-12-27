@@ -32,8 +32,10 @@ def validate_double_letters(string: str) -> bool:
 
 def validate_bad_string(string: str) -> bool:
     """Ensures disallowed substrings are not in string"""
-    ...
+
+    bad_strings = ['ab','cd','pq','xy']
+    return not any(bad_string in string for bad_string in bad_strings)
 
 if __name__ == "__main__":
 
-    print(validate_double_letters('shouldnt work'))
+    print(validate_double_letters('shouldntwork'))

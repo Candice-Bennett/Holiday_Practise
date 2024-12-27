@@ -18,9 +18,9 @@ def test_validate_double_positive_case():
     assert validate_double_letters('aabbccdd')
 
 def test_validate_double_negative_case():
-    assert not validate_vowels('aha')
-    assert not validate_vowels('shouldnt work')
-    assert not validate_vowels('the story goes')
+    assert not validate_double_letters('aha')
+    assert not validate_double_letters('shouldntwork')
+    assert not validate_double_letters('thestorygoes')
 
 def test_validate_bad_positive_case():
     assert validate_bad_string('should be fine')
