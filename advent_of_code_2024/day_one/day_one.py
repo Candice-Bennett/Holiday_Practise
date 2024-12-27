@@ -19,32 +19,30 @@ def part_two(list_one, list_two):
 
     for value in list_one:
         dict_count[value] = 0
-    
+
     for value in list_two:
         if value in dict_count.keys():
             dict_count[value] += 1
-    
+
     total = 0
 
     for value in dict_count:
         total += int(value) * int(dict_count[value])
-    
+
     return total
-
-
 
 if __name__ == '__main__':
 
     with open('day_one_input.txt', 'r', encoding='UTF-8') as file:
         data = file.read()
 
-    list_one = []
-    list_two = []
+    l1 = []
+    l2 = []
 
     for values in data.split('\n'):
 
-        list_one.append(values.split()[0])
-        list_two.append(values.split()[1])
+        l1.append(values.split()[0])
+        l2.append(values.split()[1])
 
-    print(reconcile_lists(list_one, list_two))
-    print(part_two(list_one, list_two))
+    print(reconcile_lists(l1, l2))
+    print(part_two(l1, l2))
