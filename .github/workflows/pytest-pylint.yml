@@ -17,14 +17,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Clear old test and lint results
-        run: |
-          sed -i '/### Pytest Results/,/### Pylint Results/d' README.md
-          echo "### Pytest Results" >> README.md
-          cat pytest_results.txt >> README.md
-          echo "### Pylint Results" >> README.md
-          cat pylint_results.txt >> README.md
-
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
@@ -35,14 +27,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run pytest and capture results
+      - name: Run pytest and append results directly
         run: |
-          pytest > pytest_results.txt
           echo "### Pytest Results" >> README.md
-          cat pytest_results.txt >> README.md
+          pytest >> README.md
 
-      - name: Run pylint and capture results
+      - name: Run pylint and append results directly
         run: |
-          pylint --fail-under=8 ./ > pylint_results.txt
           echo "### Pylint Results" >> README.md
-          cat pylint_results.txt >> README.md
+          pylint --fail-under=8 ./ >> README.md
