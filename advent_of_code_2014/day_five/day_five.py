@@ -50,18 +50,18 @@ def find_part_one(string: list[str]) -> None:
 
 def repeat_with_middle(string: str) -> bool:
     '''Checks if string has something of for xyx'''
-    
+
     for i in range(len(string)-2):
 
         if string[i] == string[i+2]:
             return True
-    
+
     return False
 
 
 def two_letters_no_overlap(string: str) -> bool:
     '''Checks if string has a pair of characters that repeats'''
-    
+
     pairs = []
 
     for i in range(len(string)-1):
@@ -71,7 +71,7 @@ def two_letters_no_overlap(string: str) -> bool:
         new_string = string.replace(pair, '')
         if len(string) - len(new_string) >= 4:
             return True
-    
+
     return False
 
 
@@ -94,5 +94,4 @@ if __name__ == "__main__":
 
     input_data = input_data.split('\n')
     find_part_one(input_data)
-
-
+    find_part_two(input_data)
