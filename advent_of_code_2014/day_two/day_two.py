@@ -67,4 +67,15 @@ def convert_data(string: str) -> list[int]:
 
 #I have greatly over complicated this!
 if __name__ == "__main__":
-    ...
+    
+    with open('day_two_input.txt', 'r', encoding='UTF-8') as file:
+        input_data = file.read()
+
+    input_data = input_data.split('\n')
+
+    total_sum = 0
+    for present in input_data:
+
+        total_sum += surface_area(present)
+    
+    print(total_sum)
