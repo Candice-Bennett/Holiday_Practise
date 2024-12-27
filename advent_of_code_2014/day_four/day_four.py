@@ -17,7 +17,7 @@ def hash_converter(key: str) -> str:
             found = True
             break
         
-        hash_string = key + str(i)
+        string = key + str(i)
         i += 1
     
-    return hash_string
+    return i
