@@ -17,6 +17,8 @@ Things to learn:
         - Rewrite test files as paramaterisation.
     - Github workflows.
         - Make a workflow that puts badge of pytest % and pylint score
+        ^ Significantly harder than expected - worth looking at [badge-maker](https://github.com/badgen/badgen) 
+          or [dynamic-badges-action](https://github.com/muesli/badge-load).
     - Using the any() method
         - Rewrite day two validate function to use any()
 

@@ -11,18 +11,13 @@ def hash_converter(key: str) -> str:
     string = key
     while not found:
 
-        hash_string = hashlib.md5(string.encode())
+        hash_string = hashlib.md5(string.encode()).hexdigest()
 
-        if hex(hash_string[0:5]) == "00000":
+        if hash_string[0:5] == "00000":
             found = True
             break
         
         hash_string = key + str(i)
         i += 1
     
-    
-
-
-
-result = hashlib.md5('GeeksforGeeks'.encode())
-print(result.hexdigest())
+    return hash_string
