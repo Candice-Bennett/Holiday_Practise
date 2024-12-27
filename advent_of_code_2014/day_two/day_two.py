@@ -10,7 +10,11 @@ def surface_area(dimensions: list[int]) -> int:
 
 def validate_surface_area(dimensions: list[int]) -> bool:
     """Returns whether input is of valid format."""
-    ...
+    
+    if not isinstance(dimensions, list):
+        return False
+
+    if not isinstance(dimensions)
 
 
 def convert_data(string: str) -> list[int]:
