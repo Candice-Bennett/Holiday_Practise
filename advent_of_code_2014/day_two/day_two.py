@@ -74,14 +74,14 @@ def ribbon_calculator(dimensions_string: str) -> int:
 
     if not validate_surface_area(dimensions):
         raise TypeError('Input must be of form AxBxC where A, B and C are all numbers.')
-    
+
     a, b, c = dimensions
 
     possibility_one = a + a + b + b + (a * b * c)
     possibility_two = b + b + c + c + (a * b * c)
     possibility_three = c + c + a + a + (a * b * c)
     return min([possibility_one, possibility_two, possibility_three])
-    
+
 
 #I have greatly over complicated this!
 if __name__ == "__main__":
