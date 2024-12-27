@@ -1,7 +1,7 @@
 #pylint: skip-file
 
 import pytest
-from day_two import surface_area, validate_surface_area, convert_data
+from day_two import surface_area, validate_surface_area, convert_data, ribbon_calculator
 
 def test_validate_surface_area_bad_input():
 
@@ -38,5 +38,12 @@ def test_convert_data_negative():
 
 
 def test_surface_area_correct():
+
     assert surface_area('2x3x4') == 58
     assert surface_area('1x1x10') == 43
+
+
+def test_ribbon_calculator():
+
+    assert ribbon_calculator('2x3x4') == 34
+    assert ribbon_calculator('1x1x10') == 14

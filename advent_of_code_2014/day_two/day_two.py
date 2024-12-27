@@ -66,6 +66,10 @@ def convert_data(string: str) -> list[int]:
 
     return result
 
+
+def ribbon_calculator(dimensions_string: str) -> int:
+    """Returns the amount of ribbon needed for set dimensions"""
+
 #I have greatly over complicated this!
 if __name__ == "__main__":
 
