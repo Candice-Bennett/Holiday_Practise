@@ -16,10 +16,10 @@ def hash_converter(key: str) -> str:
         if hash_string[0:5] == "00000":
             found = True
             break
-        
+
         string = key + str(i)
         i += 1
-    
+
     return i - 1
 
 if __name__ == '__main__':
