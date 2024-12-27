@@ -59,9 +59,20 @@ def repeat_with_middle(string: str) -> bool:
     return False
 
 
-def two_letters_no_overlap():
+def two_letters_no_overlap(string: str) -> bool:
     '''Checks if string has a pair of characters that repeats'''
-    ...
+    
+    pairs = []
+
+    for i in range(len(string)-1):
+        pairs.append(string[i] + string[i+1])
+
+    for pair in pairs:
+        new_string = string.replace(pair, '')
+        if len(string) - len(new_string) >= 4:
+            return True
+    
+    return False
 
 
 def find_part_two(string):
