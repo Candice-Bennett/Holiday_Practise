@@ -1,0 +1,12 @@
+I would like to do days of advent 1-5 for 2015 & 2024
+Then if feeling able to go further for 2024
+By around 10-15 I would like to focus on a data-type project
+Ideally I would have a conclusion to draw from the data - something 
+physics based would be perfect.
+
+Things to work on:
+    - Pushing to git more.
+
+
+Things to learn:
+    - Test parameterisation of tests.
