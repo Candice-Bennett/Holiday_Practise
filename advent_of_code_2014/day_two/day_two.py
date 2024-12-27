@@ -77,7 +77,10 @@ def ribbon_calculator(dimensions_string: str) -> int:
     
     a, b, c = dimensions
 
-    return 2 * (a + b) + (a * b * c)
+    possibility_one = a + a + b + b + (a * b * c)
+    possibility_two = b + b + c + c + (a * b * c)
+    possibility_three = c + c + a + a + (a * b * c)
+    return min([possibility_one, possibility_two, possibility_three])
     
 
 #I have greatly over complicated this!
@@ -95,5 +98,5 @@ if __name__ == "__main__":
         total_area += surface_area(present)
         total_ribbon += ribbon_calculator(present)
 
-    print(f'{total_area} ft^2')
-    print(f'{total_ribbon} ft')
+    print(f'{total_area} ft^2 wrapping paper')
+    print(f'{total_ribbon} ft ribbon')
