@@ -2,7 +2,7 @@
 
 def validate_vowels(string: str) -> bool:
     """Checks that at least three vowels are present in a string"""
-    
+
     vowels = ['a','e','i','o','u']
     vowel_count = 0
 
@@ -19,14 +19,14 @@ def validate_vowels(string: str) -> bool:
 
 def validate_double_letters(string: str) -> bool:
     """Checks a double letter appears in the string"""
-    
+
     for i in range(len(string)-1):
 
         if string[i] == string[i+1]:
             print(i)
             print(string[i])
             return True
-    
+
     return False
 
 
@@ -38,4 +38,12 @@ def validate_bad_string(string: str) -> bool:
 
 if __name__ == "__main__":
 
-    print(validate_double_letters('shouldntwork'))
+    with open('day_five_input.txt', 'r', encoding='UTF-8') as file:
+        input_data = file.read()
+
+    valid_strings = 0
+    for line in input_data:
+        if validate_vowels(line) and validate_double_letters(line) and validate_bad_string(line):
+            valid_strings += 1
+
+    print(valid_strings)
