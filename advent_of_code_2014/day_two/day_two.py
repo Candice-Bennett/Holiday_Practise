@@ -70,6 +70,16 @@ def convert_data(string: str) -> list[int]:
 def ribbon_calculator(dimensions_string: str) -> int:
     """Returns the amount of ribbon needed for set dimensions"""
 
+    dimensions = convert_data(dimensions_string)
+
+    if not validate_surface_area(dimensions):
+        raise TypeError('Input must be of form AxBxC where A, B and C are all numbers.')
+    
+    a, b, c = dimensions
+
+    return 2 * (a + b) + (a * b * c)
+    
+
 #I have greatly over complicated this!
 if __name__ == "__main__":
 
@@ -78,9 +88,12 @@ if __name__ == "__main__":
 
     input_data = input_data.split('\n')
 
-    total_sum = 0
+    total_area = 0
+    total_ribbon = 0
     for present in input_data:
 
-        total_sum += surface_area(present)
+        total_area += surface_area(present)
+        total_ribbon += ribbon_calculator(present)
 
-    print(total_sum)
+    print(f'{total_area} ft^2')
+    print(f'{total_ribbon} ft')
