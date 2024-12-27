@@ -21,4 +21,19 @@ def test_validate_surface_area_good_input():
 
 def test_convert_data_positive():
 
-    assert convert_data
+    assert convert_data('2x3x4') == [2,3,4]
+    assert convert_data('1x1x10') == [1,1,10]
+
+def test_convert_data_negative():
+
+    with pytest.raises(ValueError):
+        convert_data('abcabc')
+    
+    with pytest.raises(ValueError):
+        convert_data(True)
+
+    with pytest.raises(ValueError):
+        convert_data([1,2,3])
+
+    with pytest.raises(ValueError):
+        convert_data('1x2x3x4')
