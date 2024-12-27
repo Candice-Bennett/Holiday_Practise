@@ -29,20 +29,21 @@ def surface_area(dimensions_string: str) -> int:
 
 def validate_surface_area(dimensions: list[int]) -> bool:
     """Returns whether input is of valid format."""
-    
+
     if not isinstance(dimensions, list):
         return False
 
     if not len(dimensions) == 3:
         return False
 
-    if not (isinstance(dimensions[0], int) or isinstance(dimensions[0], float)):
+    if not isinstance(dimensions[0], (float, int)):
         return False
 
-    if not (isinstance(dimensions[1], int) or isinstance(dimensions[1], float)):
+    if not isinstance(dimensions[1], (float, int)):
         return False
 
-    if not (isinstance(dimensions[2], int) or isinstance(dimensions[2], float)):
+
+    if not isinstance(dimensions[2], (float, int)):
         return False
 
     return True
@@ -51,7 +52,7 @@ def validate_surface_area(dimensions: list[int]) -> bool:
 def convert_data(string: str) -> list[int]:
     """Returns an array with values from input string of form AxBxC
     Where A, B and C are numbers"""
-    
+
     if not isinstance(string, str):
         raise ValueError('Input must be a string.')
 
@@ -67,7 +68,7 @@ def convert_data(string: str) -> list[int]:
 
 #I have greatly over complicated this!
 if __name__ == "__main__":
-    
+
     with open('day_two_input.txt', 'r', encoding='UTF-8') as file:
         input_data = file.read()
 
@@ -77,5 +78,5 @@ if __name__ == "__main__":
     for present in input_data:
 
         total_sum += surface_area(present)
-    
+
     print(total_sum)
