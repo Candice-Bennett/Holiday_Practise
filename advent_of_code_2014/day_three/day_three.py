@@ -26,9 +26,12 @@ def santa_tracker(string: str) -> int:
     for co in coords_visited:
         if co not in unique_coords:
             unique_coords.append(co)
-    
+
     return len(unique_coords)
 
 if __name__ == "__main__":
 
-    print(santa_tracker("^>v<"))
+    with open('day_three_input.txt', 'r', encoding='UTF-8') as file:
+        input_data = file.read()
+
+    print(santa_tracker(input_data))
