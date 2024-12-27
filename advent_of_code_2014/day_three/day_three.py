@@ -74,4 +74,5 @@ if __name__ == "__main__":
     with open('day_three_input.txt', 'r', encoding='UTF-8') as file:
         input_data = file.read()
 
-    print(unique_coord_count(santa_tracker(input_data)))
+    print(f'{unique_coord_count(santa_tracker(input_data))} with santa on his own.')
+    print(f'{robo_santa_tracker(input_data)} with santa and his robot.')
