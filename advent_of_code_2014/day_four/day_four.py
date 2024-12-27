@@ -20,4 +20,8 @@ def hash_converter(key: str) -> str:
         string = key + str(i)
         i += 1
     
-    return i
+    return i - 1
+
+if __name__ == '__main__':
+
+    print(hash_converter('ckczppom'))
