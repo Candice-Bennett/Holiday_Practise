@@ -2,10 +2,11 @@
 
 import re
 
-def surface_area(dimensions: list[int]) -> int:
+def surface_area(dimensions_string: str) -> int:
     """Takes the three dimensions of an object and 
     returns the area of wrapping paper needed."""
-    ...
+
+    
 
 
 def validate_surface_area(dimensions: list[int]) -> bool:
@@ -14,7 +15,19 @@ def validate_surface_area(dimensions: list[int]) -> bool:
     if not isinstance(dimensions, list):
         return False
 
-    if not isinstance(dimensions)
+    if not len(dimensions) == 3:
+        return False
+
+    if not dimensions[0].isdigit():
+        return False
+
+    if not dimensions[1].isdigit():
+        return False
+
+    if not dimensions[2].isdigit():
+        return False
+
+    return True
 
 
 def convert_data(string: str) -> list[int]:
