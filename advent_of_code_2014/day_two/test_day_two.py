@@ -1,7 +1,7 @@
 #pylint: skip-file
 
 import pytest
-from advent_of_code_2014.day_two.day_two import surface_area, validate_surface_area, convert_data
+from day_two import surface_area, validate_surface_area, convert_data
 
 def test_surface_area_correct():
     assert surface_area('2x3x4') == 58
