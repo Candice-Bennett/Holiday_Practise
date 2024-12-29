@@ -39,6 +39,13 @@ def day_three_first_pt(input_data: str) -> int:
 
     return sum_of_mul
 
+
+def filter_corrupted_memory_pt_two(string: str) -> list[str]:
+    """Filters the string for mult(), do() and don't() functions."""
+
+    regex =  re.compile(r'mul\(\d\d?\d?,\d\d?\d?\)|do\(\)|don\'t\(\)')
+    return regex.findall(string)
+
 if __name__ == "__main__":
 
     with open('day_three_input.txt','r',encoding='UTF-8') as file:
