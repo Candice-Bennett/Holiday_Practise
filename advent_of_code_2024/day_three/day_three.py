@@ -16,7 +16,7 @@ def interpret_data(data: list[str]) -> list[list[int]]:
         first_step_clean = recovered_data[4:-1]
         split_data = first_step_clean.split(',')
         numbers.append(split_data)
-    
+
     return numbers
 
 
@@ -42,6 +42,6 @@ def day_three_first_pt(input_data: str) -> int:
 if __name__ == "__main__":
 
     with open('day_three_input.txt','r',encoding='UTF-8') as file:
-        input_data = file.read()
+        day_three_input = file.read()
 
-    print(day_three_first_pt(input_data))
+    print(day_three_first_pt(day_three_input))
