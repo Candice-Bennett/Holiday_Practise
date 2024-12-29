@@ -46,9 +46,42 @@ def filter_corrupted_memory_pt_two(string: str) -> list[str]:
     regex =  re.compile(r'mul\(\d\d?\d?,\d\d?\d?\)|do\(\)|don\'t\(\)')
     return regex.findall(string)
 
+
+def run_do_dont_commands(data: list[str]) -> list[str]:
+    """Removes all mul() commands preceded by a don't()."""
+
+    do = True
+    return_data = []
+
+    for value in data:
+        if value == "do()":
+            do = True
+        elif value == "don't()":
+            do = False
+        elif value != "do()" and do:
+            return_data.append(value)
+
+    return return_data
+
+
+def day_three_second_pt(input_data: str) -> int:
+    """Returns the solution to day three part 2."""
+
+    cleaned_data = filter_corrupted_memory_pt_two(input_data)
+    modified_data = run_do_dont_commands(cleaned_data)
+    numbers = interpret_data(modified_data)
+
+    sum_of_mul = 0
+
+    for number in numbers:
+        sum_of_mul += mul(number[0],number[1])
+
+    return sum_of_mul
+
 if __name__ == "__main__":
 
     with open('day_three_input.txt','r',encoding='UTF-8') as file:
         day_three_input = file.read()
 
     print(day_three_first_pt(day_three_input))
+    print(day_three_second_pt(day_three_input))
