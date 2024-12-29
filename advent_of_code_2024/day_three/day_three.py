@@ -20,21 +20,28 @@ def interpret_data(data: list[str]) -> list[list[int]]:
     return numbers
 
 
-def mul(x: int, y: int) -> int:
+def mul(x: str, y: str) -> int:
     """Returns the product of two numbers x and y."""
 
-    return x * y
+    return int(x) * int(y)
 
 
 def day_three_first_pt(input_data: str) -> int:
     """Produces the sum of all the uncorrupted data."""
 
-    
+    cleaned_data = filter_corrupted_memory(input_data)
+    numbers = interpret_data(cleaned_data)
+
+    sum_of_mul = 0
+
+    for number in numbers:
+        sum_of_mul += mul(number[0],number[1])
+
+    return sum_of_mul
 
 if __name__ == "__main__":
 
     with open('day_three_input.txt','r',encoding='UTF-8') as file:
         input_data = file.read()
 
-    print(filter_corrupted_memory(input_data))
-    print(interpret_data(filter_corrupted_memory(input_data)))
+    print(day_three_first_pt(input_data))
