@@ -19,8 +19,13 @@ Things to learn:
         - Make a workflow that puts badge of pytest % and pylint score : completed within reason
         ^ Significantly harder than expected - worth looking at [badge-maker](https://github.com/badgen/badgen) 
           or [dynamic-badges-action](https://github.com/muesli/badge-load).
+        . Have written (largely copied from before) a workflow that runs pytest and pylint, then captures output
+          and adds to README.md. The text is not cleaned which a clear improvement for the future but task was to
+          reacquaint with yaml and workflows in general and that has been successful I feel.
     - Using the any() method
         - Rewrite day two 2014 validate function to use any()
+        ^ Rewrote with not all() instead as makes more sense - will attempt to use all() and any() 
+          to reduce lines of code in the future
 
 Practice SQL:
     - https://www.sql-practice.com/ : all easy done so far!

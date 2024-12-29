@@ -35,15 +35,8 @@ def validate_surface_area(dimensions: list[int]) -> bool:
 
     if not len(dimensions) == 3:
         return False
-
-    if not isinstance(dimensions[0], (float, int)):
-        return False
-
-    if not isinstance(dimensions[1], (float, int)):
-        return False
-
-
-    if not isinstance(dimensions[2], (float, int)):
+    
+    if not all(isinstance(d, (float, int)) for d in dimensions):
         return False
 
     return True
