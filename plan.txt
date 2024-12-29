@@ -22,6 +22,9 @@ Things to learn:
     - Using the any() method
         - Rewrite day two 2014 validate function to use any()
 
+Practice SQL:
+    - https://www.sql-practice.com/ : all easy done so far!
+
 Data Project:
     - Tracking the decline of RTS video games across time
     - Compare to other genres
