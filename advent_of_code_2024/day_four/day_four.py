@@ -10,8 +10,14 @@ def find_horizontal(grid: list[str], reverse=False) -> int:
     """Returns the number of horizontal XMAS instances"""
     
     total_xmas = 0
-    regex = re.compile(r'XMAS')
+
+    if not reverse:
+        regex = re.compile(r'XMAS')
+    else:
+        regex = re.compile(r'SAMX')
+
     for line in grid:
+        print(reverse)
         total_xmas += len(regex.findall(line))
     
     return total_xmas
