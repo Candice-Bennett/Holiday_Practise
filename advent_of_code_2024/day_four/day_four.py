@@ -48,14 +48,15 @@ def find_diagonal(grid: list[str], reverse=False) -> int:
     for i in range(len(grid)):
         for j in range(len(grid[i])):
 
-           if (i + 4) <= len(grid) and (j + 4) <= len(grid[i]):
-            if grid[i][j] == 'X':
-                if grid[i+1][j+1] == 'M':
-                    if grid[i+2][j+2] == 'A':
-                        if grid[i+3][j+3] == 'S':
-                            total_xmas += 1
+            if (i + 4) <= len(grid) and (j + 4) <= len(grid[i]):
+                if grid[i][j] == 'X':
+                    if grid[i+1][j+1] == 'M':
+                        if grid[i+2][j+2] == 'A':
+                            if grid[i+3][j+3] == 'S':
+                                total_xmas += 1
+
             
-            if (i + 4) <= len(grid) and (j - 4) >= 0:
+            if (i + 4) <= len(grid) and (j-3) >= 0:
                 if grid[i][j] == 'X':
                     print(f'{i},{j}')
                     if grid[i+1][j-1] == 'M':
