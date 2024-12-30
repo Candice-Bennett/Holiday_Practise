@@ -32,6 +32,7 @@ def find_vertical(grid: list[str], reverse=False) -> int:
     for i in range(len(grid)):
         for j in range(len(grid[i])):
             rotated_grid[j] += grid[i][j]
+    print(rotated_grid)
     
     return find_horizontal(rotated_grid, reverse)
 
@@ -39,7 +40,33 @@ def find_vertical(grid: list[str], reverse=False) -> int:
 
 def find_diagonal(grid: list[str], reverse=False) -> int:
     """Returns the number of diagonal XMAS instances"""
-    ...
+
+    # diagonal_strings = [''] * (2 * len(grid) - 1)
+    
+    total_xmas = 0
+
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+
+           if (i + 4) <= len(grid) and (j + 4) <= len(grid[i]):
+            if grid[i][j] == 'X':
+                if grid[i+1][j+1] == 'M':
+                    if grid[i+2][j+2] == 'A':
+                        if grid[i+3][j+3] == 'S':
+                            total_xmas += 1
+            
+            if (i + 4) <= len(grid) and (j - 4) >= 0:
+                if grid[i][j] == 'X':
+                    print(f'{i},{j}')
+                    if grid[i+1][j-1] == 'M':
+                        if grid[i+2][j-2] == 'A':
+                            if grid[i+3][j-3] == 'S':
+                                total_xmas += 1
+    
+    return total_xmas
+
+    
+
 
 if __name__ == "__main__":
 
@@ -53,11 +80,10 @@ if __name__ == "__main__":
     print(len(split_data))
     print(len(line))
 
-    new_grid = ['XXXXX',
-                'MMMMM',
-                'AAAAA',
-                'SSSSS',
-                'XXXXX']
+    new_grid = ['XXXX',
+                'MMMM',
+                'AAAA',
+                'SSSS']
 
     print(new_grid)
-    find_vertical(new_grid)
+    print(find_diagonal(new_grid))
