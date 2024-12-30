@@ -40,10 +40,11 @@ def find_vertical(grid: list[str], reverse=False) -> int:
 
 def find_diagonal(grid: list[str], reverse=False) -> int:
     """Returns the number of diagonal XMAS instances"""
-
-    # diagonal_strings = [''] * (2 * len(grid) - 1)
     
     total_xmas = 0
+
+    if reverse:
+        grid = grid[::-1]
 
     for i in range(len(grid)):
         for j in range(len(grid[i])):
@@ -55,7 +56,6 @@ def find_diagonal(grid: list[str], reverse=False) -> int:
                             if grid[i+3][j+3] == 'S':
                                 total_xmas += 1
 
-            
             if (i + 4) <= len(grid) and (j-3) >= 0:
                 if grid[i][j] == 'X':
                     print(f'{i},{j}')
@@ -67,7 +67,15 @@ def find_diagonal(grid: list[str], reverse=False) -> int:
     return total_xmas
 
     
+#SXXX
+#XAXX
+#XXMX
+#XXXX
 
+#XXXX
+#XXMX
+#XAXX
+#SXXX
 
 if __name__ == "__main__":
 
