@@ -90,7 +90,7 @@ def x_mas_finder(grid: str) -> int:
 
                         if grid[i-1][j-1] != grid[i+1][j+1] and grid[i-1][j+1] != grid[i+1][j-1]:
                             x_mas_counter += 1
-    
+
     return x_mas_counter
 
 if __name__ == "__main__":
@@ -99,3 +99,4 @@ if __name__ == "__main__":
         input_data = file.read()
 
     print(xmas_finder(input_data))
+    print(x_mas_finder(input_data))
