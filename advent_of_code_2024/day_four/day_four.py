@@ -81,7 +81,7 @@ def x_mas_finder(grid: str) -> int:
 
             if grid[i][j] == "A":
 
-                if i - 1 >= 0 and j - 1 >= 0 and i + 1 <= len(grid) and j + 1 <= len(grid):
+                if i - 1 >= 0 and j - 1 >= 0 and i + 2 <= len(grid) and j + 2 <= len(grid):
 
                     if (grid[i-1][j-1] in m_s and
                         grid[i-1][j+1] in m_s and
