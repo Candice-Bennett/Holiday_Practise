@@ -68,6 +68,31 @@ def xmas_finder(grid: str) -> int:
             find_vertical(grid) + find_vertical(grid, True) +
             find_diagonal(grid) + find_diagonal(grid, True))
 
+
+def x_mas_finder(grid: str) -> int:
+    """Returns number of x-mas-es."""
+
+    grid = grid.split('\n')
+    m_s = ["M","S"]
+    x_mas_counter = 0
+
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+
+            if grid[i][j] == "A":
+
+                if i - 1 >= 0 and j - 1 >= 0 and i + 1 <= len(grid) and j + 1 <= len(grid):
+
+                    if (grid[i-1][j-1] in m_s and
+                        grid[i-1][j+1] in m_s and
+                        grid[i+1][j-1] in m_s and
+                        grid[i+1][j+1] in m_s):
+
+                        if grid[i-1][j-1] != grid[i+1][j+1] and grid[i-1][j+1] != grid[i+1][j-1]:
+                            x_mas_counter += 1
+    
+    return x_mas_counter
+
 if __name__ == "__main__":
 
     with open('day_four_input.txt', 'r', encoding='UTF-8') as file:

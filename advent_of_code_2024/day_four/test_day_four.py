@@ -1,6 +1,6 @@
 #pylint: skip-file
 
-from day_four import find_horizontal, find_vertical, find_diagonal
+from day_four import find_horizontal, find_vertical, find_diagonal, x_mas_finder
 
 def test_horizontal():
     assert find_horizontal(['XMAS']) == 1
@@ -96,3 +96,16 @@ def test_backwards_diagonal():
                           'SMMMS',
                           'XSSXX',
                           'SSSSS'], True) == 3
+
+def test_x_mas_finder():
+
+    assert x_mas_finder('''.M.S......
+..A..MSMS.
+.M.S.MAA..
+..A.ASMSM.
+.M.S.M....
+..........
+S.S.S.S.S.
+.A.A.A.A..
+M.M.M.M.M.
+..........''') == 9
