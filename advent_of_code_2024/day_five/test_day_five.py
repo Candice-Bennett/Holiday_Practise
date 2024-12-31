@@ -94,10 +94,12 @@ def test_sequences_extractor():
 
 def test_valid_rule():
     assert valid_rule([23,24,57,98,25],[24,25])
-    assert not valid_rule([23,24,57,98,25],[77,78])
+    assert valid_rule([23,24,57,98,25],[77,78])
     assert not valid_rule([23,24,57,98,25],[57,24])
+    assert not valid_rule([23,24,57,98,25],[25,98])
 
 def test_valid_sequence():
     assert valid_sequence([23,24,57,98,25],[[24,25],[23,98]])
-    assert not valid_sequence([23,24,57,98,25],[[24,25],[12,11]])
-    assert valid_sequence([23,24,57,98,25],[[25,98],[24,23]])
+    assert valid_sequence([23,24,57,98,25],[[24,25],[12,11]])
+    assert valid_sequence([23,24,57,98,25],[[20,57],[44,23]])
+    assert not valid_sequence([23,24,57,98,25],[[10,56],[57,23]])

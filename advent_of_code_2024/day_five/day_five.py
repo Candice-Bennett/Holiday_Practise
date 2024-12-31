@@ -35,20 +35,20 @@ def valid_rule(sequence: list[int], rule: list[int]) -> bool:
     """Returns if a rule is followed by a sequence."""
 
     for i in range(len(sequence)):
+
         if sequence[i] == rule[0]:
             return True
         elif sequence[i] == rule[1]:
             return False
     
-    return False
-
+    return True
 
 
 def valid_sequence(sequence: list[int], rules: list[list[int]]) -> bool:
     """Returns if a sequence follows the given rules."""
 
     for rule in rules:
-        if rule in sequence:
+        if rule[0] in sequence and rule[1] in sequence:
             if not valid_rule(sequence, rule):
                 return False
 
