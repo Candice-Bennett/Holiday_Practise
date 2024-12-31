@@ -22,7 +22,7 @@ def extract_sequences(data: str) -> list[list[int]]:
     for line in split_data:
         if ',' in line:
             sequence = line.split(',')
-            sequences.append(int(sequence[:]))
+            sequences.append([int(num) for num in sequence])
     
     return sequences
 
