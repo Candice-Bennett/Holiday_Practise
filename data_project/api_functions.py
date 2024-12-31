@@ -24,7 +24,7 @@ def generate_token() -> dict:
 
 
 def get_info_test() -> dict:
-    """Tests API request."""
+    """Tests api request."""
 
     load_dotenv('.env')
 
@@ -35,12 +35,12 @@ def get_info_test() -> dict:
         'Authorization': "Bearer " + environ["TWITCH_ACCESS_TOKEN"]
     }
 
-    body = {"fields": "*"}
+    body = 'fields *;'
 
-    # Use `json` instead of `data`
-    response = post(query_string, headers=headers, json=body, timeout=60)
+    response = post(query_string, **{'headers': headers, 'data': body}, timeout=60)
 
-    return response.json()
+    return response
 
 if __name__ == '__main__':
+
     print(get_info_test())
