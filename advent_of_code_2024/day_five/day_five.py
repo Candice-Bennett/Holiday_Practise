@@ -43,29 +43,43 @@ def valid_rule(sequence: list[int], rule: list[int]) -> bool:
 
 def correct_sequence(sequence: list[int], rule: list[int]) -> list[int]:
     """Takes a sequence and corrects it according to the rule."""
+
+    if rule[0] in sequence and rule[1] in sequence and not valid_rule(sequence, rule):
     
-    for i in range(len(sequence)):
+        for i in range(len(sequence)):
 
-        if sequence[i] == rule[1]:
-            sequence[i] = rule[0]
+            if sequence[i] == rule[1]:
+                sequence[i] = rule[0]
 
-        elif sequence[i] == rule[0]:
-            sequence[i] = rule [1]
+            elif sequence[i] == rule[0]:
+                sequence[i] = rule [1]
 
     return sequence
 #first just swap any two numbers that break the rule
 #if that doesnt work then once recalibrated, rerun whole sequence through rules *again*
 #if not generate 'master sequence' then loop through it and pull values as appear from there
 
-def valid_sequence(sequence: list[int], rules: list[list[int]]) -> bool:
+def valid_sequence(sequence: list[int], rules: list[list[int]], pt_two=False) -> bool:
     """Returns if a sequence follows the given rules."""
+
+    corrected = False
 
     for rule in rules:
         if rule[0] in sequence and rule[1] in sequence:
             if not valid_rule(sequence, rule):
-                return False
+                if not pt_two:
+                    return False, None
+                else:
+                    corrected = True
+                    sequence = correct_sequence(sequence, rule)
+    
+    if not pt_two:
+        return True, None
 
-    return True
+    if pt_two and corrected:
+        return True, sequence
+
+    return None, None
 
 
 def find_middle(sequence: list[int]) -> int:
@@ -87,6 +101,44 @@ def solve_day_five_pt_one(data) -> int:
             total_middle += find_middle(sequence)
 
     return total_middle
+
+
+def solve_day_five_pt_two(data) -> int:
+    """Returns the sum of the middle numbers of fixed invalid sequences."""
+
+    rules = extract_rules(data)
+    sequences = extract_sequences(data)
+
+    total_middle = 0
+    corrected_sequences = []
+
+    for sequence in sequences:
+
+        corrected_sequence = valid_sequence(sequence, rules, True)
+
+        if corrected_sequence[0]:
+            print(sequence)
+            corrected_sequences.append(corrected_sequence[1])
+    
+    print(corrected_sequences)
+    
+    for i in range(len(corrected_sequences)):
+        for rule in rules:
+            corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
+    
+    print(corrected_sequences)
+        
+    for i in range(len(corrected_sequences)):
+        for rule in rules:
+            corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
+
+    print(corrected_sequences)
+
+    for sequence in corrected_sequences:
+        total_middle += find_middle(sequence)
+
+    return total_middle
+
 
 if __name__ == '__main__':
 
