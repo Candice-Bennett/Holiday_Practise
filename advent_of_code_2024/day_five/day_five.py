@@ -45,7 +45,7 @@ def correct_sequence(sequence: list[int], rule: list[int]) -> list[int]:
     """Takes a sequence and corrects it according to the rule."""
 
     if rule[0] in sequence and rule[1] in sequence and not valid_rule(sequence, rule):
-    
+
         for i in range(len(sequence)):
 
             if sequence[i] == rule[1]:
@@ -72,7 +72,7 @@ def valid_sequence(sequence: list[int], rules: list[list[int]], pt_two=False) ->
                 else:
                     corrected = True
                     sequence = correct_sequence(sequence, rule)
-    
+
     if not pt_two:
         return True, None
 
@@ -119,15 +119,15 @@ def solve_day_five_pt_two(data) -> int:
         if corrected_sequence[0]:
             print(sequence)
             corrected_sequences.append(corrected_sequence[1])
-    
+
     print(corrected_sequences)
-    
+
     for i in range(len(corrected_sequences)):
         for rule in rules:
             corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
-    
+
     print(corrected_sequences)
-        
+
     for i in range(len(corrected_sequences)):
         for rule in rules:
             corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
