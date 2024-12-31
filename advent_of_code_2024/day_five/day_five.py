@@ -117,22 +117,13 @@ def solve_day_five_pt_two(data) -> int:
         corrected_sequence = valid_sequence(sequence, rules, True)
 
         if corrected_sequence[0]:
-            print(sequence)
             corrected_sequences.append(corrected_sequence[1])
 
-    print(corrected_sequences)
-
-    for i in range(len(corrected_sequences)):
-        for rule in rules:
-            corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
-
-    print(corrected_sequences)
-
-    for i in range(len(corrected_sequences)):
-        for rule in rules:
-            corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
-
-    print(corrected_sequences)
+    #find a steady state solution via overkill
+    for j in range(100):
+        for i in range(len(corrected_sequences)):
+            for rule in rules:
+                corrected_sequences[i] = correct_sequence(corrected_sequences[i], rule)
 
     for sequence in corrected_sequences:
         total_middle += find_middle(sequence)
@@ -146,3 +137,4 @@ if __name__ == '__main__':
         input_data = file.read()
 
     print(solve_day_five_pt_one(input_data))
+    print(solve_day_five_pt_two(input_data))
