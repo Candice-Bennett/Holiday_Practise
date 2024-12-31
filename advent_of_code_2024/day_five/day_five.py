@@ -55,6 +55,12 @@ def valid_sequence(sequence: list[int], rules: list[list[int]]) -> bool:
     return True
 
 
+def find_middle(sequence: list[int]) -> int:
+    """Returns the middle number of the sequence"""
+
+    return sequence[int(len(sequence)/2 - 0.5)]
+
+
 def solve_day_five_pt_one(data) -> int:
     """Returns the sum of the middle numbers of valid sequences."""
 
@@ -68,8 +74,6 @@ def solve_day_five_pt_one(data) -> int:
             total_middle += find_middle(sequence)
 
     return total_middle
-
-
 
 if __name__ == '__main__':
 
