@@ -38,3 +38,19 @@ Data Project:
     - Sales figures
 
     SteamDB? MobiGames? Need to look for APIs.
+
+    Notes:
+    - SteamWebAPI https://developer.valvesoftware.com/wiki/Steam_Web_API
+    ^ Info on users playing games
+    - IGBD API https://api-docs.igdb.com/#getting-started
+    ^ Info on games (including genres)
+    - RAWR API https://rawg.io/apidocs
+    ^ Info on games
+
+    What insights am I hoping to draw out?
+    - RTS and strategy releases across time (ideally 30-35 year period)
+    - RTS and strategy review scores across time
+    - How many players are concurrently playing in 24 hr period
+    - How many players historically by genres
+    ^ This then across time
+    - Historic sales by genre
