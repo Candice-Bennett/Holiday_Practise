@@ -41,6 +41,22 @@ def valid_rule(sequence: list[int], rule: list[int]) -> bool:
     return True
 
 
+def correct_sequence(sequence: list[int], rule: list[int]) -> list[int]:
+    """Takes a sequence and corrects it according to the rule."""
+    
+    for i in range(len(sequence)):
+
+        if sequence[i] == rule[1]:
+            sequence[i] = rule[0]
+
+        elif sequence[i] == rule[0]:
+            sequence[i] = rule [1]
+
+    return sequence
+#first just swap any two numbers that break the rule
+#if that doesnt work then once recalibrated, rerun whole sequence through rules *again*
+#if not generate 'master sequence' then loop through it and pull values as appear from there
+
 def valid_sequence(sequence: list[int], rules: list[list[int]]) -> bool:
     """Returns if a sequence follows the given rules."""
 

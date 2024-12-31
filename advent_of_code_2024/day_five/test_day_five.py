@@ -1,6 +1,6 @@
 #pylint: skip-file
 
-from day_five import extract_rules, extract_sequences, valid_rule, valid_sequence, find_middle
+from day_five import extract_rules, extract_sequences, valid_rule, valid_sequence, find_middle, correct_sequence
 
 def test_rule_extractor():
     assert extract_rules('93|53') == [[93,53]]
@@ -107,3 +107,11 @@ def test_valid_sequence():
 def test_find_middle():
     assert find_middle([13,22,24]) == 22
     assert find_middle([11,10,11,20,24]) == 11
+
+def test_correct_sequence():
+    assert correct_sequence([75,97,47,61,53],[97,75]) == [97,75,47,61,53]
+    assert correct_sequence([61,13,29],[29,13]) == [61,29,13]
+    assert correct_sequence([97,13,75,29,47],[29,13]) == [97,29,75,13,47]
+    assert correct_sequence([97,29,75,13,47],[47,13]) == [97,29,75,47,13]
+    assert correct_sequence([97,29,75,47,13],[47,29]) == [97,47,75,29,13]
+    
