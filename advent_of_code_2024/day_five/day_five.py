@@ -6,8 +6,12 @@ def extract_rules(data: str) -> list[list[int]]:
 
     rules = []
     for line in split_data:
+        print(line)
         if '|' in line:
+            print('| present')
             rule = line.split('|')
+            print(rule)
+            print([int(rule[0]),int(rule[1])])
             rules.append([int(rule[0]),int(rule[1])])
     
     return rules
