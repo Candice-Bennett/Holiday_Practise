@@ -13,7 +13,7 @@ def extract_rules(data: str) -> list[list[int]]:
             print(rule)
             print([int(rule[0]),int(rule[1])])
             rules.append([int(rule[0]),int(rule[1])])
-    
+
     return rules
 
 
@@ -27,14 +27,31 @@ def extract_sequences(data: str) -> list[list[int]]:
         if ',' in line:
             sequence = line.split(',')
             sequences.append([int(num) for num in sequence])
-    
+
     return sequences
+
+
+def solve_day_five_pt_one(data) -> int:
+    """Returns the sum of the middle numbers of valid sequences."""
+
+    rules = extract_rules(data)
+    sequences = extract_sequences(data)
+
+    total_middle = 0
+
+    for sequence in sequences:
+        if valid_sequence():
+            total_middle += find_middle(sequence)
+
+    return total_middle
+
+
 
 if __name__ == '__main__':
 
     with open('day_five_input.txt','r',encoding='UTF-8') as file:
         input_data = file.read()
-    
+
     print(input_data)
     print(extract_rules(input_data))
     print(extract_sequences(input_data))
