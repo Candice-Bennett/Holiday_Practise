@@ -1,6 +1,6 @@
 #pylint: skip-file
 
-from day_five import extract_rules, extract_sequences
+from day_five import extract_rules, extract_sequences, valid_rule, valid_sequence
 
 def test_rule_extractor():
     assert extract_rules('93|53') == [[93,53]]
@@ -91,3 +91,13 @@ def test_sequences_extractor():
 [61,13,29],
 [97,13,75,29,47]
 ]
+
+def test_valid_rule():
+    assert valid_rule([23,24,57,98,25],[24,25])
+    assert not valid_rule([23,24,57,98,25],[77,78])
+    assert not valid_rule([23,24,57,98,25],[57,24])
+
+def test_valid_sequence():
+    assert valid_sequence([23,24,57,98,25],[[24,25],[23,98]])
+    assert not valid_sequence([23,24,57,98,25],[[24,25],[12,11]])
+    assert valid_sequence([23,24,57,98,25],[[25,98],[24,23]])

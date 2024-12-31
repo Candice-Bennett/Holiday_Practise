@@ -31,6 +31,30 @@ def extract_sequences(data: str) -> list[list[int]]:
     return sequences
 
 
+def valid_rule(sequence: list[int], rule: list[int]) -> bool:
+    """Returns if a rule is followed by a sequence."""
+
+    for i in range(len(sequence)):
+        if sequence[i] == rule[0]:
+            return True
+        elif sequence[i] == rule[1]:
+            return False
+    
+    return False
+
+
+
+def valid_sequence(sequence: list[int], rules: list[list[int]]) -> bool:
+    """Returns if a sequence follows the given rules."""
+
+    for rule in rules:
+        if rule in sequence:
+            if not valid_rule(sequence, rule):
+                return False
+
+    return True
+
+
 def solve_day_five_pt_one(data) -> int:
     """Returns the sum of the middle numbers of valid sequences."""
 
@@ -40,7 +64,7 @@ def solve_day_five_pt_one(data) -> int:
     total_middle = 0
 
     for sequence in sequences:
-        if valid_sequence():
+        if valid_sequence(sequence, rules):
             total_middle += find_middle(sequence)
 
     return total_middle
