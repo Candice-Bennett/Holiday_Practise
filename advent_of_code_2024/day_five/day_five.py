@@ -6,12 +6,8 @@ def extract_rules(data: str) -> list[list[int]]:
 
     rules = []
     for line in split_data:
-        print(line)
         if '|' in line:
-            print('| present')
             rule = line.split('|')
-            print(rule)
-            print([int(rule[0]),int(rule[1])])
             rules.append([int(rule[0]),int(rule[1])])
 
     return rules
@@ -38,9 +34,10 @@ def valid_rule(sequence: list[int], rule: list[int]) -> bool:
 
         if sequence[i] == rule[0]:
             return True
-        elif sequence[i] == rule[1]:
+
+        if sequence[i] == rule[1]:
             return False
-    
+
     return True
 
 
@@ -80,6 +77,4 @@ if __name__ == '__main__':
     with open('day_five_input.txt','r',encoding='UTF-8') as file:
         input_data = file.read()
 
-    print(input_data)
-    print(extract_rules(input_data))
-    print(extract_sequences(input_data))
+    print(solve_day_five_pt_one(input_data))
