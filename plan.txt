@@ -28,7 +28,7 @@ Things to learn:
           to reduce lines of code in the future
 
 Practice SQL:
-    - https://www.sql-practice.com/ : all easy done so far!
+    - https://www.sql-practice.com/ : all easy done so far! + 11 medium.
 
 Data Project:
     - Tracking the decline of RTS video games across time
@@ -46,6 +46,15 @@ Data Project:
     ^ Info on games (including genres)
     - RAWR API https://rawg.io/apidocs
     ^ Info on games
+
+    Progress:
+    - Find an API ✓
+    - Connect to the API ✓
+    - Get some data ...
+    - Generate graphs x
+    - Draw conclusions x
+    - Repeat last three x0
+    - Bring it all together in one document
 
     What insights am I hoping to draw out?
     - RTS and strategy releases across time (ideally 30-35 year period)
