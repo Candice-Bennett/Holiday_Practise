@@ -20,23 +20,49 @@ def locate_item(grid: list[str], item: str) -> list[int]:
     return coords
 
 
+def move_officer(officer_location, obstruction_locations, direction) -> tuple[list[int], bool]:
+    """Returns all the coordinates covered in the move"""
+
+    match direction:
+        case 1:
+            ... #go north
+        case 2:
+            ... #go east
+        case 3:
+            ... #go south
+        case 4:
+            ... #go west 
+
 def part_one_solution(grid_string: str) -> int:
     """Returns the number of spaces visited by the officer."""
-    ...
+    
+    grid = comprehend_input(grid_string)
+
+    officer_coords = locate_item(grid,'^')[0]
+    obstruction_coords = locate_item(grid,'#')
+
+    x_boundary = len(grid[0]) - 1
+    y_boundary = len(grid) - 1
+    inside_grid = True
+
+    officer_direction = 1
+
+    total_coords = []
+
+    while inside_grid:
+        coords_moved = move_officer(officer_coords, obstruction_coords, officer_direction)
+
+        for coord in coords_moved[0]:
+
+            if not coord in total_coords:
+                total_coords.append(coord)
+        
+        officer_direction == (officer_direction % 4) + 1
+        inside_grid = coords_moved[1]
+    
+    return len(total_coords)
+
 
 if __name__ == '__main__':
 
-    string = '''....#.....
-.........#
-..........
-..#.......
-.......#..
-..........
-.#..^.....
-........#.
-#.........
-......#...'''
-
-    print(string)
-    print(comprehend_input(string))
-    print(locate_officer(comprehend_input(string)))
+    print([(i % 4) + 1 for i in range(12)])
