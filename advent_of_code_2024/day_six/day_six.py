@@ -49,7 +49,7 @@ def move_officer(officer_location: list[int],
             else:
 
                 in_grid = False
-                for i in range(officer_location[1]):
+                for i in range(officer_location[0]+1):
                     coords_traveled.append([officer_location[0]-i,officer_location[1]])
 
             return (coords_traveled, in_grid)
@@ -117,7 +117,7 @@ def move_officer(officer_location: list[int],
             else:
 
                 in_grid = False
-                for i in range(officer_location[1]):
+                for i in range(officer_location[1]+1):
                     coords_traveled.append([officer_location[0],officer_location[1]-i])
 
             return (coords_traveled, in_grid)
@@ -131,7 +131,7 @@ def part_one_solution(grid_string: str) -> int:
     officer_coords = locate_item(grid,'^')[0]
     obstruction_coords = locate_item(grid,'#')
 
-    boundaries = [len(grid) - 1, len(grid[0])-1]
+    boundaries = [len(grid) - 1, len(grid[0]) - 1]
     inside_grid = True
 
     officer_direction = 1
@@ -143,25 +143,15 @@ def part_one_solution(grid_string: str) -> int:
                                     boundaries, officer_direction)
 
         officer_coords = coords_moved[0][-1]
-         
-        match officer_direction:
-            case 1: #north
-                if officer_coords[1] == 0:
-                    coords_moved[1] = False
-            case 2: #east
-                if officer_coords[0] == len(grid[0])-1:
-                    coords_moved[1] = False
-            case 3: #south
-                if officer_coords[1] == len(grid)-1:
-                    coords_moved[1] = False
-            case 4: #west
-                if officer_coords[0] == 0:
-                    coords_moved[1] = False
 
         for coord in coords_moved[0]:
 
             if not coord in total_coords:
                 total_coords.append(coord)
+            
+            if coord in obstruction_coords:
+                print(f'ERROR AT {coord}')
+                raise Exception(f'ERROR AT {coord}')
 
         officer_direction = (officer_direction % 4) + 1
         inside_grid = coords_moved[1]
