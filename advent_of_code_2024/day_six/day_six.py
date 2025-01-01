@@ -1,13 +1,13 @@
 """Script containing all the functions for day six."""
 
+
 def comprehend_input(grid_string: str) -> list[str]:
     """Takes the grid string and turns it into a list"""
     return grid_string.split('\n')
 
 
 def locate_item(grid: list[str], item: str) -> list[int]:
-    """Takes the grid and returns the coordinate [x,y] where the officer is
-    where +x is eastwardly and +y is southern."""
+    """Takes the grid and returns the coordinates where item is."""
 
     coords = []
 
@@ -58,7 +58,7 @@ def move_officer(officer_location: list[int],
             for obstruction in obstruction_locations:
                 if obstruction[0] == officer_location[0]:
                     if obstruction[1] > officer_location[1] and (
-                        stopping_object is None or obstruction[1] > stopping_object[1]):
+                        stopping_object is None or obstruction[1] < stopping_object[1]):
 
                         stopping_object = obstruction
 
@@ -103,7 +103,7 @@ def move_officer(officer_location: list[int],
             for obstruction in obstruction_locations:
                 if obstruction[0] == officer_location[0]:
                     if obstruction[1] < officer_location[1] and (
-                        stopping_object is None or obstruction[1] < stopping_object[1]):
+                        stopping_object is None or obstruction[1] > stopping_object[1]):
 
                         stopping_object = obstruction
 
@@ -131,7 +131,7 @@ def part_one_solution(grid_string: str) -> int:
     officer_coords = locate_item(grid,'^')[0]
     obstruction_coords = locate_item(grid,'#')
 
-    boundaries = [len(grid) - 1,len(grid[0]) - 1]
+    boundaries = [len(grid) - 1, len(grid[0])-1]
     inside_grid = True
 
     officer_direction = 1
@@ -142,9 +142,21 @@ def part_one_solution(grid_string: str) -> int:
         coords_moved = move_officer(officer_coords, obstruction_coords,
                                     boundaries, officer_direction)
 
-        print(coords_moved)
-
         officer_coords = coords_moved[0][-1]
+         
+        match officer_direction:
+            case 1: #north
+                if officer_coords[1] == 0:
+                    coords_moved[1] = False
+            case 2: #east
+                if officer_coords[0] == len(grid[0])-1:
+                    coords_moved[1] = False
+            case 3: #south
+                if officer_coords[1] == len(grid)-1:
+                    coords_moved[1] = False
+            case 4: #west
+                if officer_coords[0] == 0:
+                    coords_moved[1] = False
 
         for coord in coords_moved[0]:
 
@@ -152,22 +164,45 @@ def part_one_solution(grid_string: str) -> int:
                 total_coords.append(coord)
 
         officer_direction = (officer_direction % 4) + 1
-        print(officer_direction)
         inside_grid = coords_moved[1]
 
-    return len(total_coords)
+    return total_coords
+
+
+def draw_grid(grid, grid_coords, obstruction_coords):
+    """Draws the grid for visualising"""
+
+    for i in range(len(grid)):
+        grid[i] = list(grid[i])
+
+    for coord in grid_coords:
+        grid[coord[0]][coord[1]] = 'X'
+
+    for coord in obstruction_coords:
+        if grid[coord[0]][coord[1]] != '#':
+            grid[coord[0]][coord[1]] = '!'
+
+    for i in range(len(grid)):
+        grid[i] = ''.join(grid[i])
+
+    grid = '\n'.join(grid)
+    print(grid)
+    dict = {}
+    for character in grid:
+        if character not in dict.keys():
+            dict[character] = 1
+        else:
+            dict[character] += 1
+    print(dict)
 
 
 if __name__ == '__main__':
 
-    print(part_one_solution('''....#.....
-.........#
-..........
-..#.......
-.......#..
-..........
-.#..^.....
-........#.
-#.........
-......#...
-'''))
+    with open('day_six_input.txt','r',encoding='UTF-8') as file:
+        input_data = file.read()
+
+    grid_coords = part_one_solution(input_data)
+
+    grid = comprehend_input(input_data)
+    draw_grid(grid, grid_coords, locate_item(grid,'#'))
+    print(len(grid_coords))
