@@ -8,7 +8,7 @@ def comprehend_input(grid_string: str) -> list[str]:
 def locate_item(grid: list[str], item: str) -> list[int]:
     """Takes the grid and returns the coordinate [x,y] where the officer is
     where +x is eastwardly and +y is southern."""
-    
+
     coords = []
 
     for i in range(len(grid)):
@@ -16,7 +16,7 @@ def locate_item(grid: list[str], item: str) -> list[int]:
             for j in range(len(grid[i])):
                 if grid[i][j] == item:
                     coords.append([i,j])
-    
+
     return coords
 
 
@@ -33,90 +33,99 @@ def move_officer(officer_location: list[int],
         case 1: #go north
             for obstruction in obstruction_locations:
                 if obstruction[1] == officer_location[1]:
-                    if obstruction[0] < officer_location[0] and (stopping_object is None or obstruction[0] > stopping_object[0]):
+
+                    if obstruction[0] < officer_location[0] and (
+                        stopping_object is None or obstruction[0] > stopping_object[0]):
+
                         stopping_object = obstruction
-            
+
             coords_traveled = [officer_location]
 
             if stopping_object is not None:
                 in_grid = True
                 for i in range(abs(officer_location[0]-stopping_object[0])):
                     coords_traveled.append([officer_location[0]-i,officer_location[1]])
-            
+
             else:
 
                 in_grid = False
                 for i in range(officer_location[1]):
-                    coords_traveled.append([officer_location[0]-i,officer_location[1]]) 
+                    coords_traveled.append([officer_location[0]-i,officer_location[1]])
 
             return (coords_traveled, in_grid)
 
         case 2: #go east
             for obstruction in obstruction_locations:
                 if obstruction[0] == officer_location[0]:
-                    if obstruction[1] > officer_location[1] and (stopping_object is None or obstruction[1] > stopping_object[1]):
+                    if obstruction[1] > officer_location[1] and (
+                        stopping_object is None or obstruction[1] > stopping_object[1]):
+
                         stopping_object = obstruction
-            
+
             coords_traveled = [officer_location]
 
             if stopping_object is not None:
                 in_grid = True
                 for i in range(abs(officer_location[1]-stopping_object[1])):
                     coords_traveled.append([officer_location[0],officer_location[1]+i])
-            
+
             else:
 
                 in_grid = False
                 for i in range(abs(officer_location[1]-boundaries[1])):
-                    coords_traveled.append([officer_location[0],officer_location[1]+i]) 
+                    coords_traveled.append([officer_location[0],officer_location[1]+i])
 
             return (coords_traveled, in_grid)
 
         case 3: #go south
             for obstruction in obstruction_locations:
                 if obstruction[1] == officer_location[1]:
-                    if obstruction[0] > officer_location[0] and (stopping_object is None or obstruction[0] < stopping_object[0]):
+                    if obstruction[0] > officer_location[0] and (
+                        stopping_object is None or obstruction[0] < stopping_object[0]):
+
                         stopping_object = obstruction
-            
+
             coords_traveled = [officer_location]
 
             if stopping_object is not None:
                 in_grid = True
                 for i in range(abs(officer_location[0]-stopping_object[0])):
                     coords_traveled.append([officer_location[0]+i,officer_location[1]])
-            
+
             else:
                 in_grid = False
                 for i in range(abs(officer_location[1]-boundaries[0])):
-                    coords_traveled.append([officer_location[0]+i,officer_location[1]]) 
+                    coords_traveled.append([officer_location[0]+i,officer_location[1]])
 
             return (coords_traveled, in_grid)
 
         case 4: #go west
             for obstruction in obstruction_locations:
                 if obstruction[0] == officer_location[0]:
-                    if obstruction[1] < officer_location[1] and (stopping_object is None or obstruction[1] < stopping_object[1]):
+                    if obstruction[1] < officer_location[1] and (
+                        stopping_object is None or obstruction[1] < stopping_object[1]):
+
                         stopping_object = obstruction
-            
+
             coords_traveled = [officer_location]
 
             if stopping_object is not None:
                 in_grid = True
                 for i in range(abs(officer_location[1]-stopping_object[1])):
                     coords_traveled.append([officer_location[0],officer_location[1]-i])
-            
+
             else:
 
                 in_grid = False
                 for i in range(officer_location[1]):
-                    coords_traveled.append([officer_location[0],officer_location[1]-i]) 
+                    coords_traveled.append([officer_location[0],officer_location[1]-i])
 
             return (coords_traveled, in_grid)
 
 
 def part_one_solution(grid_string: str) -> int:
     """Returns the number of spaces visited by the officer."""
-    
+
     grid = comprehend_input(grid_string)
 
     officer_coords = locate_item(grid,'^')[0]
@@ -132,7 +141,7 @@ def part_one_solution(grid_string: str) -> int:
     while inside_grid:
         coords_moved = move_officer(officer_coords, obstruction_coords,
                                     boundaries, officer_direction)
-        
+
         print(coords_moved)
 
         officer_coords = coords_moved[0][-1]
@@ -141,11 +150,11 @@ def part_one_solution(grid_string: str) -> int:
 
             if not coord in total_coords:
                 total_coords.append(coord)
-        
+
         officer_direction = (officer_direction % 4) + 1
         print(officer_direction)
         inside_grid = coords_moved[1]
-    
+
     return len(total_coords)
 
 
